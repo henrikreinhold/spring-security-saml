@@ -62,7 +62,7 @@ public abstract class AbstractProfileBase implements InitializingBean {
     /**
      * Maximum time from response creation when the message is deemed valid.
      */
-    private int responseSkew = 60;
+    private int responseSkew = 60 + 2*3600;
 
     /**
      * Maximum time between assertion creation and current time when the assertion is usable

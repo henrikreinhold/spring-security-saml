@@ -1,4 +1,4 @@
-/* Copyright 2009 Vladimir Schäfer
+/* Copyright 2009 Vladimir Sch��fer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ import java.util.*;
  * the current deployment environment. All the URLs in the metadata will be derived from information in
  * the ServletContext.
  *
- * @author Vladimir Schäfer
+ * @author Vladimir Sch��fer
  */
 public class MetadataGenerator {
 
@@ -65,9 +65,9 @@ public class MetadataGenerator {
     private String entityBaseURL;
     private String entityAlias;
 
-    private boolean requestSigned = true;
-    private boolean wantAssertionSigned = true;
-    private boolean signMetadata = true;
+    private boolean requestSigned = false;
+    private boolean wantAssertionSigned = false;
+    private boolean signMetadata = false;
 
     private String signingKey = null;
     private String encryptionKey = null;

@@ -1,4 +1,4 @@
-/* Copyright 2009-2011 Vladimir Schäfer
+/* Copyright 2009-2011 Vladimir Sch��fer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,7 +72,7 @@ public class MetadataManager extends ChainingMetadataProvider implements Extende
     private long refreshCheckInterval = 10000l;
 
     // Flag indicating whether metadata needs to be reloaded
-    private boolean refreshRequired = true;
+    private boolean refreshRequired = false;
 
     // Storage for cryptographic data used to verify metadata signatures
     protected KeyManager keyManager;

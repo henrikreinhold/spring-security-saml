@@ -1,4 +1,4 @@
-/* Copyright 2009 Vladimir Schäfer
+/* Copyright 2009 Vladimir Sch��fer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
 package org.springframework.security.saml.storage;
 
 import org.opensaml.xml.XMLObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.saml.parser.SAMLObject;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +30,12 @@ import java.util.Set;
  * can't be serialized and failover could thus be prevented, the messages are transformed into SAMLObject
  * which internally marshalls the content into XML during serialization.
  *
- * @author Vladimir Schäfer
+ * @author Vladimir Sch��fer
  */
 public class HttpSessionStorage implements SAMLMessageStorage {
 
+    protected final static Logger logger = LoggerFactory.getLogger( HttpSessionStorage.class );
+   
     private final HttpSession session;
     private Hashtable<String, SAMLObject<XMLObject>> messages;
 
@@ -82,7 +86,8 @@ public class HttpSessionStorage implements SAMLMessageStorage {
      * @param message message to be stored
      */
     public void storeMessage(String messageId, XMLObject message) {
-        messages.put(messageId, new SAMLObject<XMLObject>(message));
+       logger.debug( "Storing object with id: " + messageId + " in session with id: " + session.getId() );
+       messages.put(messageId, new SAMLObject<XMLObject>(message));
     }
 
     /**
@@ -97,7 +102,8 @@ public class HttpSessionStorage implements SAMLMessageStorage {
      * @return message found or null
      */
     public XMLObject retrieveMessage(String messageID) {
-        SAMLObject o = messages.get(messageID);
+       logger.debug( "Retreiving object with id: " + messageID + " from session with id: " + session.getId() );
+       SAMLObject o = messages.get(messageID);
         if (o == null) {
             return null;
         } else {
